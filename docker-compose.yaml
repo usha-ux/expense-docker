@@ -1,0 +1,35 @@
+Networks:
+   expense: {}
+volumes:
+    mysql:
+services:
+     backend:
+      image: backend:1.0.0
+      command: sleep 5
+      networks:
+      - expense
+      container_name: backend
+      depends_on:
+      -  mysql
+
+     mysql:
+      image: mysql:1.0.0
+      networks: 
+      - expense
+      container_name: mysql
+      volumes:
+      - mysql:/var?lib/mysql
+
+     frontend:
+      image: frontene:1.0.0
+      networks:
+      - expense
+      container_name: frontend
+      ports:
+      - 80:80
+      depends_on:
+      - backend 
+
+   
+
+
