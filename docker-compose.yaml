@@ -5,7 +5,6 @@ volumes:
 services:
      backend:
       image: backend:1.0.0
-      command: sleep 5
       networks:
       - expense
       container_name: backend
